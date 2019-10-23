@@ -1,0 +1,13 @@
+---
+ - hosts: all
+   tasks:
+    - name: wget
+      apt: name=wget state=present
+    - name: java state=present
+      command: wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+    - name: key
+      rpm_key:
+        key: http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+    - name: jenkins
+      apt: name=jenkins state=present
+      
